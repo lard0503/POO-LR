@@ -5,8 +5,10 @@
 package formularios;
 
 import dao.DPersona;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import modelos.Persona;
 import modelos.Sexo;
 
 /**
@@ -50,8 +52,8 @@ public class FrmPersona extends javax.swing.JFrame {
         jToolBar1 = new javax.swing.JToolBar();
         jBtnLimpiar = new javax.swing.JButton();
         jBtnAgregar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jBtnEditar = new javax.swing.JButton();
+        jBtnEliminar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
         jBtnPrimero = new javax.swing.JButton();
         jBtnAnterior = new javax.swing.JButton();
@@ -78,7 +80,7 @@ public class FrmPersona extends javax.swing.JFrame {
         jToolBar1.setRollover(true);
 
         jBtnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/img/Nuevo.png"))); // NOI18N
-        jBtnLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBtnLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jBtnLimpiar.setFocusable(false);
         jBtnLimpiar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jBtnLimpiar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -90,7 +92,7 @@ public class FrmPersona extends javax.swing.JFrame {
         jToolBar1.add(jBtnLimpiar);
 
         jBtnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/img/Guardar.png"))); // NOI18N
-        jBtnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBtnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jBtnAgregar.setFocusable(false);
         jBtnAgregar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jBtnAgregar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -101,17 +103,29 @@ public class FrmPersona extends javax.swing.JFrame {
         });
         jToolBar1.add(jBtnAgregar);
 
-        jButton1.setText("jButton1");
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton1);
+        jBtnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/img/editar.png"))); // NOI18N
+        jBtnEditar.setEnabled(false);
+        jBtnEditar.setFocusable(false);
+        jBtnEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBtnEditar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBtnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnEditarActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jBtnEditar);
 
-        jButton2.setText("jButton2");
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton2);
+        jBtnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/complementos/img/Eliminar.png"))); // NOI18N
+        jBtnEliminar.setEnabled(false);
+        jBtnEliminar.setFocusable(false);
+        jBtnEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBtnEliminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBtnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnEliminarActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jBtnEliminar);
         jToolBar1.add(jSeparator1);
 
         jBtnPrimero.setText("|<");
@@ -172,8 +186,9 @@ public class FrmPersona extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 882, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLblSexo)
                     .addComponent(jLblEmail)
@@ -186,16 +201,16 @@ public class FrmPersona extends javax.swing.JFrame {
                     .addComponent(jTfApellidos)
                     .addComponent(jTfEmail)
                     .addComponent(jTfId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCmbSexo, 0, 235, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                    .addComponent(jCmbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(24, 24, 24))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -220,7 +235,7 @@ public class FrmPersona extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -284,18 +299,24 @@ public class FrmPersona extends javax.swing.JFrame {
                 String ape = dP.getListPersona().get(pos).getApellidos();
                 String ema = dP.getListPersona().get(pos).getEmail();
                 Sexo sex = dP.getListPersona().get(pos).getSexo();
-                jTfId.setText(""+id);
+                jTfId.setText("" + id);
                 jTfNombres.setText(nom);
                 jTfApellidos.setText(ape);
                 jTfEmail.setText(ema);
-                if(sex == Sexo.HOMBRE) jCmbSexo.setSelectedIndex(0);
-                else jCmbSexo.setSelectedIndex(1);
+                if (sex == Sexo.HOMBRE) {
+                    jCmbSexo.setSelectedIndex(0);
+                } else {
+                    jCmbSexo.setSelectedIndex(1);
+                }
+                jBtnAgregar.setEnabled(false);
+                jBtnEditar.setEnabled(true);
+                jBtnEliminar.setEnabled(true);
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage(),
                         "Error", JOptionPane.ERROR_MESSAGE);
             }
 
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "No hay registros...",
                     "Registros", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -303,26 +324,32 @@ public class FrmPersona extends javax.swing.JFrame {
 
     private void jBtnUltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnUltimoActionPerformed
         // TODO add your handling code here:
-        if(!dP.getListPersona().isEmpty()){
+        if (!dP.getListPersona().isEmpty()) {
             try {
-                pos = dP.getListPersona().size() -1;
+                pos = dP.getListPersona().size() - 1;
                 int id = dP.getListPersona().get(pos).getId();
                 String nom = dP.getListPersona().get(pos).getNombre();
                 String ape = dP.getListPersona().get(pos).getApellidos();
                 String ema = dP.getListPersona().get(pos).getEmail();
                 Sexo sex = dP.getListPersona().get(pos).getSexo();
-                jTfId.setText(""+id);
+                jTfId.setText("" + id);
                 jTfNombres.setText(nom);
                 jTfApellidos.setText(ape);
                 jTfEmail.setText(ema);
-                if(sex == Sexo.HOMBRE) jCmbSexo.setSelectedIndex(0);
-                else jCmbSexo.setSelectedIndex(1);
+                if (sex == Sexo.HOMBRE) {
+                    jCmbSexo.setSelectedIndex(0);
+                } else {
+                    jCmbSexo.setSelectedIndex(1);
+                }
+                jBtnAgregar.setEnabled(false);
+                jBtnEditar.setEnabled(true);
+                jBtnEliminar.setEnabled(true);
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage(),
                         "Error", JOptionPane.ERROR_MESSAGE);
             }
 
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "No hay registros...",
                     "Registros", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -330,27 +357,35 @@ public class FrmPersona extends javax.swing.JFrame {
 
     private void jBtnAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAnteriorActionPerformed
         // TODO add your handling code here:
-        if(!dP.getListPersona().isEmpty()){
+        if (!dP.getListPersona().isEmpty()) {
             try {
                 pos--;
-                if (pos < 0) pos = dP.getListPersona().size()-1;
+                if (pos < 0) {
+                    pos = dP.getListPersona().size() - 1;
+                }
                 int id = dP.getListPersona().get(pos).getId();
                 String nom = dP.getListPersona().get(pos).getNombre();
                 String ape = dP.getListPersona().get(pos).getApellidos();
                 String ema = dP.getListPersona().get(pos).getEmail();
                 Sexo sex = dP.getListPersona().get(pos).getSexo();
-                jTfId.setText(""+id);
+                jTfId.setText("" + id);
                 jTfNombres.setText(nom);
                 jTfApellidos.setText(ape);
                 jTfEmail.setText(ema);
-                if(sex == Sexo.HOMBRE) jCmbSexo.setSelectedIndex(0);
-                else jCmbSexo.setSelectedIndex(1);
+                if (sex == Sexo.HOMBRE) {
+                    jCmbSexo.setSelectedIndex(0);
+                } else {
+                    jCmbSexo.setSelectedIndex(1);
+                }
+                jBtnAgregar.setEnabled(false);
+                jBtnEditar.setEnabled(true);
+                jBtnEliminar.setEnabled(true);
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage(),
                         "Error", JOptionPane.ERROR_MESSAGE);
             }
 
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "No hay registros...",
                     "Registros", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -358,31 +393,71 @@ public class FrmPersona extends javax.swing.JFrame {
 
     private void jBtnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSiguienteActionPerformed
         // TODO add your handling code here:
-        if(!dP.getListPersona().isEmpty()){
+        if (!dP.getListPersona().isEmpty()) {
             try {
-                pos ++;
-                if(pos == dP.getListPersona().size()) pos = 0;
+                pos++;
+                if (pos == dP.getListPersona().size()) {
+                    pos = 0;
+                }
                 int id = dP.getListPersona().get(pos).getId();
                 String nom = dP.getListPersona().get(pos).getNombre();
                 String ape = dP.getListPersona().get(pos).getApellidos();
                 String ema = dP.getListPersona().get(pos).getEmail();
                 Sexo sex = dP.getListPersona().get(pos).getSexo();
-                jTfId.setText(""+id);
+                jTfId.setText("" + id);
                 jTfNombres.setText(nom);
                 jTfApellidos.setText(ape);
                 jTfEmail.setText(ema);
-                if(sex == Sexo.HOMBRE) jCmbSexo.setSelectedIndex(0);
-                else jCmbSexo.setSelectedIndex(1);
+                if (sex == Sexo.HOMBRE) {
+                    jCmbSexo.setSelectedIndex(0);
+                } else {
+                    jCmbSexo.setSelectedIndex(1);
+                }
+                jBtnAgregar.setEnabled(false);
+                jBtnEditar.setEnabled(true);
+                jBtnEliminar.setEnabled(true);
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage(),
                         "Error", JOptionPane.ERROR_MESSAGE);
             }
 
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "No hay registros...",
                     "Registros", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jBtnSiguienteActionPerformed
+
+    private void jBtnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEditarActionPerformed
+        // TODO add your handling code here:
+        this.dP.getListPersona().get(pos).setId(Integer.parseInt(jTfId.getText()));
+        this.dP.getListPersona().get(pos).setNombre(jTfNombres.getText());
+        this.dP.getListPersona().get(pos).setApellidos(jTfApellidos.getText());
+        this.dP.getListPersona().get(pos).setEmail(jTfEmail.getText());
+        if(jCmbSexo.getSelectedIndex()==0)
+            dP.getListPersona().get(pos).setSexo(Sexo.HOMBRE);
+        else
+            dP.getListPersona().get(pos).setSexo(Sexo.MUJER);
+        JOptionPane.showMessageDialog(this, "Cambios realizados", 
+                "Editar", JOptionPane.INFORMATION_MESSAGE);
+        llenarTabla();
+        limpiar();
+    }//GEN-LAST:event_jBtnEditarActionPerformed
+
+    private void jBtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEliminarActionPerformed
+        // TODO add your handling code here:
+        int op;
+        op= JOptionPane.showConfirmDialog(this, 
+                "Desea Eliminar?", "Eliminar", JOptionPane.YES_NO_OPTION);
+        if(op == 0){
+            JOptionPane.showMessageDialog(this, 
+                    "OK");
+            llenarTabla();
+            limpiar();
+        }else{
+            JOptionPane.showMessageDialog(this, 
+                    "Operacion Cancelada");
+        }
+    }//GEN-LAST:event_jBtnEliminarActionPerformed
 
     private void llenarTabla() {
         DefaultTableModel tbl = new DefaultTableModel();
@@ -396,6 +471,9 @@ public class FrmPersona extends javax.swing.JFrame {
         jTfApellidos.setText("");
         jTfEmail.setText("");
         jCmbSexo.setSelectedIndex(-1);
+        jBtnAgregar.setEnabled(true);
+        jBtnEditar.setEnabled(false);
+        jBtnEliminar.setEnabled(false);
         jTfId.requestFocus();
     }
 
@@ -437,12 +515,12 @@ public class FrmPersona extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnAgregar;
     private javax.swing.JButton jBtnAnterior;
+    private javax.swing.JButton jBtnEditar;
+    private javax.swing.JButton jBtnEliminar;
     private javax.swing.JButton jBtnLimpiar;
     private javax.swing.JButton jBtnPrimero;
     private javax.swing.JButton jBtnSiguiente;
     private javax.swing.JButton jBtnUltimo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jCmbSexo;
     private javax.swing.JLabel jLblApellidos;
     private javax.swing.JLabel jLblEmail;
