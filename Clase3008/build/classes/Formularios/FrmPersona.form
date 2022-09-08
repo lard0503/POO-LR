@@ -27,7 +27,7 @@
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jToolBar1" pref="824" max="32767" attributes="0"/>
+                      <Component id="jToolBar1" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
@@ -55,13 +55,13 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jTfID" min="-2" pref="71" max="-2" attributes="0"/>
                           <Component id="jCmbSexo" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTfEmail" min="-2" pref="260" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                               <Component id="jTfNombres" alignment="0" pref="230" max="32767" attributes="0"/>
                               <Component id="jTfApellidos" alignment="0" max="32767" attributes="0"/>
                           </Group>
+                          <Component id="jTfEmail" alignment="0" min="-2" pref="260" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="472" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -77,26 +77,24 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLblID" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTfID" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLblNombres" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTfNombres" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                                      <Component id="jLblApellidos" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="jTfApellidos" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLblID" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTfID" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jLblEmail" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLblNombres" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTfNombres" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="jLblApellidos" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jTfEmail" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTfApellidos" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLblEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTfEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
