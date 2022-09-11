@@ -27,6 +27,8 @@ public class FrmPersona extends javax.swing.JFrame {
         initComponents();
         jBtnLimpiar.setToolTipText("Limpiar");
         jBtnAgregar.setToolTipText("Agregar");
+        jBtnEditar.setToolTipText("Editar");
+        jBtnEliminar.setToolTipText("Eliminar");
         jCmbSexo.setSelectedIndex(-1);
     }
 
@@ -449,6 +451,7 @@ public class FrmPersona extends javax.swing.JFrame {
         op= JOptionPane.showConfirmDialog(this, 
                 "Desea Eliminar?", "Eliminar", JOptionPane.YES_NO_OPTION);
         if(op == 0){
+            dP.getListPersona().remove(pos);
             JOptionPane.showMessageDialog(this, 
                     "OK");
             llenarTabla();
