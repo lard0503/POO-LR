@@ -13,6 +13,7 @@ import miuam.MiUAM;
  * @author ale05
  */
 public class Menu extends javax.swing.JFrame {
+    private dao.Usuario lista = new dao.Usuario();
 
     /**
      * Creates new form Menu
@@ -120,6 +121,7 @@ public class Menu extends javax.swing.JFrame {
     private void mnuUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuUsuariosActionPerformed
         // TODO add your handling code here:
         Usuario user = new Usuario();
+        user.setLista(lista);
         this.jMiEscritorio.add(user);
         user.setVisible(true);
     }//GEN-LAST:event_mnuUsuariosActionPerformed
@@ -168,4 +170,12 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem mnuSalir;
     private javax.swing.JCheckBoxMenuItem mnuUsuarios;
     // End of variables declaration//GEN-END:variables
+
+    public dao.Usuario getLista() {
+        return lista;
+    }
+
+    public void setLista(dao.Usuario lista) {
+        this.lista = lista;
+    }
 }
