@@ -4,6 +4,7 @@
  */
 package formularios;
 
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -11,8 +12,9 @@ import javax.swing.JOptionPane;
  * @author ale05
  */
 public class Login extends javax.swing.JFrame {
+
     public dao.Usuario usuarios = new dao.Usuario();
-    private int intentos =0;
+    private int intentos = 0;
 
     /**
      * Creates new form Login
@@ -57,6 +59,11 @@ public class Login extends javax.swing.JFrame {
                 jTfUsuarioActionPerformed(evt);
             }
         });
+        jTfUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTfUsuarioKeyReleased(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -64,6 +71,11 @@ public class Login extends javax.swing.JFrame {
 
         jPfPw.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jPfPw.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPfPw.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jPfPwKeyReleased(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 0)));
 
@@ -71,6 +83,11 @@ public class Login extends javax.swing.JFrame {
         jBtnOk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnOkActionPerformed(evt);
+            }
+        });
+        jBtnOk.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jBtnOkKeyReleased(evt);
             }
         });
 
@@ -163,23 +180,50 @@ public class Login extends javax.swing.JFrame {
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         // TODO add your handling code here:
+        validar();
+    }
+
+    private void validar() {
         String user = jTfUsuario.getText();
         String pw = jPfPw.getText();
-        if(intentos == 3){
+        if (intentos
+                == 3) {
             JOptionPane.showMessageDialog(this, "Muchos intentos. Adios");
             System.exit(0);
         }
-        if(usuarios.autenticarUsuario(user, pw)){
-            Menu mnu = new Menu ();
-            mnu.setLista(usuarios);
+
+        if (usuarios.autenticarUsuario(user, pw)) {
+            Menu mnu = new Menu(usuarios);
             mnu.setVisible(true);
             //this.setVisible(false);
-            dispose ();
-        }else{
+            dispose();
+        } else {
             JOptionPane.showMessageDialog(this, "Incorrecto");
             intentos++;
         }
+
     }//GEN-LAST:event_jBtnOkActionPerformed
+
+    private void jBtnOkKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnOkKeyReleased
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            validar();
+        }
+    }//GEN-LAST:event_jBtnOkKeyReleased
+
+    private void jPfPwKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPfPwKeyReleased
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            validar();
+        }
+    }//GEN-LAST:event_jPfPwKeyReleased
+
+    private void jTfUsuarioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTfUsuarioKeyReleased
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            jPfPw.requestFocus();
+        }
+    }//GEN-LAST:event_jTfUsuarioKeyReleased
 
     /**
      * @param args the command line arguments
@@ -226,4 +270,5 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPfPw;
     private javax.swing.JTextField jTfUsuario;
     // End of variables declaration//GEN-END:variables
+
 }

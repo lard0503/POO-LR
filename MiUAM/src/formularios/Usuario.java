@@ -4,6 +4,7 @@
  */
 package formularios;
 
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -15,12 +16,18 @@ public class Usuario
         extends javax.swing.JInternalFrame {
 
     private dao.Usuario lista = new dao.Usuario();
+    int fila=-1;
 
     /**
      * Creates new form Usuario
      */
     public Usuario() {
         initComponents();
+    }
+    
+    public Usuario(dao.Usuario user){
+        initComponents();
+        this.lista = user;
         jTblRegistros.setModel(generarTabla());
     }
 
@@ -33,7 +40,11 @@ public class Usuario
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jInternalFrame1 = new javax.swing.JInternalFrame();
+        jToolBar1 = new javax.swing.JToolBar();
+        jBtnNuevo = new javax.swing.JButton();
+        jBtnGuardar = new javax.swing.JButton();
+        jBtnEditar = new javax.swing.JButton();
+        jBtnEliminar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -45,19 +56,59 @@ public class Usuario
         jTfEmail = new javax.swing.JTextField();
         jTfNombres = new javax.swing.JTextField();
         jPfPw = new javax.swing.JPasswordField();
-        jToolBar1 = new javax.swing.JToolBar();
-        jBtnNuevo = new javax.swing.JButton();
-        jBtnGuardar = new javax.swing.JButton();
-        jBtnEditar = new javax.swing.JButton();
-        jBtnEliminar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTblRegistros = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Usuario");
 
-        jInternalFrame1.setClosable(true);
-        jInternalFrame1.setTitle("Usuario");
-        jInternalFrame1.setVisible(true);
+        jToolBar1.setRollover(true);
+
+        jBtnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/formularios/complementos/img/Nuevo.png"))); // NOI18N
+        jBtnNuevo.setToolTipText("Nuevo");
+        jBtnNuevo.setFocusable(false);
+        jBtnNuevo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBtnNuevo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBtnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnNuevoActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jBtnNuevo);
+
+        jBtnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/formularios/complementos/img/Guardar.png"))); // NOI18N
+        jBtnGuardar.setToolTipText("Guardar");
+        jBtnGuardar.setFocusable(false);
+        jBtnGuardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBtnGuardar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBtnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnGuardarActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jBtnGuardar);
+
+        jBtnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/formularios/complementos/img/editar.png"))); // NOI18N
+        jBtnEditar.setToolTipText("Editar");
+        jBtnEditar.setEnabled(false);
+        jBtnEditar.setFocusable(false);
+        jBtnEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBtnEditar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBtnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnEditarActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jBtnEditar);
+
+        jBtnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/formularios/complementos/img/Eliminar.png"))); // NOI18N
+        jBtnEliminar.setToolTipText("Eliminar");
+        jBtnEliminar.setEnabled(false);
+        jBtnEliminar.setFocusable(false);
+        jBtnEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBtnEliminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(jBtnEliminar);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0)), "Datos Generales", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
@@ -121,43 +172,8 @@ public class Usuario
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jTfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
-
-        jToolBar1.setRollover(true);
-
-        jBtnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/formularios/complementos/img/Nuevo.png"))); // NOI18N
-        jBtnNuevo.setToolTipText("Nuevo");
-        jBtnNuevo.setFocusable(false);
-        jBtnNuevo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jBtnNuevo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jBtnNuevo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnNuevoActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jBtnNuevo);
-
-        jBtnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/formularios/complementos/img/Guardar.png"))); // NOI18N
-        jBtnGuardar.setToolTipText("Guardar");
-        jBtnGuardar.setFocusable(false);
-        jBtnGuardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jBtnGuardar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jBtnGuardar);
-
-        jBtnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/formularios/complementos/img/editar.png"))); // NOI18N
-        jBtnEditar.setToolTipText("Editar");
-        jBtnEditar.setFocusable(false);
-        jBtnEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jBtnEditar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jBtnEditar);
-
-        jBtnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/formularios/complementos/img/Eliminar.png"))); // NOI18N
-        jBtnEliminar.setToolTipText("Eliminar");
-        jBtnEliminar.setFocusable(false);
-        jBtnEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jBtnEliminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jBtnEliminar);
 
         jTblRegistros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -170,67 +186,106 @@ public class Usuario
 
             }
         ));
+        jTblRegistros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTblRegistrosMousePressed(evt);
+            }
+        });
+        jTblRegistros.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTblRegistrosKeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTblRegistros);
-
-        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
-        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
-        jInternalFrame1Layout.setHorizontalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
-        );
-        jInternalFrame1Layout.setVerticalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addGap(7, 7, 7)
-                .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(36, 36, 36))
-        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jInternalFrame1)
-                .addContainerGap())
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jInternalFrame1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(49, 49, 49))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jBtnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnNuevoActionPerformed
+        // TODO add your handling code here:
+        limpiar();
+        jBtnGuardar.setEnabled(true);
+        jBtnEliminar.setEnabled(false);
+        jBtnEditar.setEnabled(false);
+        }
+
+        private void limpiar() {
+            jTfUserName.setText("");
+            jPfPw.setText("");
+            jTfNombres.setText("");
+            jTfApellidos.setText("");
+            jTfEmail.setText("");
+            jTblRegistros.setModel(generarTabla());
+            jTfUserName.requestFocus();
+    }//GEN-LAST:event_jBtnNuevoActionPerformed
+
     private void jTfNombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTfNombresActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTfNombresActionPerformed
 
-    private void jBtnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnNuevoActionPerformed
+    private void jBtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnGuardarActionPerformed
         // TODO add your handling code here:
+        String id = jTfUserName.getText();
+        String pw = String.valueOf(jPfPw.getPassword());
+        String nom = jTfNombres.getText();
+        String ape = jTfApellidos.getText();
+        String ema = jTfEmail.getText();
+        lista.agregar(id, pw, nom, ape, ema);
+        jTblRegistros.setModel(generarTabla());
         limpiar();
-    }
+    }//GEN-LAST:event_jBtnGuardarActionPerformed
 
-    private void limpiar() {
-        jTfUserName.setText("");
-        jPfPw.setText("");
-        jTfNombres.setText("");
-        jTfApellidos.setText("");
-        jTfEmail.setText("");
-        jTfUserName.requestFocus();
-    }//GEN-LAST:event_jBtnNuevoActionPerformed
+    private void jTblRegistrosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTblRegistrosMousePressed
+        // TODO add your handling code here:
+        editarTabla();
+    }//GEN-LAST:event_jTblRegistrosMousePressed
+
+    private void jTblRegistrosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTblRegistrosKeyReleased
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_DOWN || evt.getKeyCode()==KeyEvent.VK_UP){
+            editarTabla();
+        }
+    }//GEN-LAST:event_jTblRegistrosKeyReleased
+
+    private void jBtnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEditarActionPerformed
+        // TODO add your handling code here:
+        String id = jTfUserName.getText();
+        String pw = String.valueOf(jPfPw.getPassword());
+        String nom = jTfNombres.getText();
+        String ape = jTfApellidos.getText();
+        String ema = jTfEmail.getText();
+        lista.editar (id, pw, nom, ape, ema);
+        jBtnGuardar.setEnabled(true);
+        jBtnEditar.setEnabled(false);
+        jBtnEliminar.setEnabled(false);
+        limpiar();
+    }//GEN-LAST:event_jBtnEditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -273,7 +328,6 @@ public class Usuario
     private javax.swing.JButton jBtnEliminar;
     private javax.swing.JButton jBtnGuardar;
     private javax.swing.JButton jBtnNuevo;
-    private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -318,5 +372,29 @@ public class Usuario
             JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage(), "Error al generar tabla", JOptionPane.WARNING_MESSAGE);
         }
         return dtm;
+    }
+    
+    private void editarTabla(){
+        int fila;
+        try{
+            fila = jTblRegistros.getSelectedRow();
+            String userName = lista.getLista().get(fila).getUserName();
+            String pw = lista.getLista().get(fila).getPw();
+            String nom = lista.getLista().get(fila).getNombres();
+            String ape = lista.getLista().get(fila).getApellidos();
+            String ema = lista.getLista().get(fila).getEmail();
+            
+            this.jTfUserName.setText(userName);
+            this.jPfPw.setText(pw);
+            this.jTfNombres.setText(nom);
+            this.jTfApellidos.setText(ape);
+            this.jTfEmail.setText(ema);
+            this.jBtnGuardar.setEnabled(false);
+            this.jBtnEditar.setEnabled(true);
+            this.jBtnEliminar.setEnabled(true);
+            //this.jTfUserName.requestFocus();
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(this, "Error al seleccionar", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }

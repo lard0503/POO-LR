@@ -70,4 +70,7 @@ public class Usuario {
         return this.userName.equals(user) && this.pw.equals(pw);
     }
     
+    public boolean existe(String user){
+        return this.userName.equals(user);
+    }
 }
