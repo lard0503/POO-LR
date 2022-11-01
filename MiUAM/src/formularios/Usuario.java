@@ -5,6 +5,7 @@
 package formularios;
 
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -45,6 +46,10 @@ public class Usuario
         jBtnGuardar = new javax.swing.JButton();
         jBtnEditar = new javax.swing.JButton();
         jBtnEliminar = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JToolBar.Separator();
+        jLabel6 = new javax.swing.JLabel();
+        jTfValor = new javax.swing.JTextField();
+        jBtnBuscar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -108,7 +113,29 @@ public class Usuario
         jBtnEliminar.setFocusable(false);
         jBtnEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jBtnEliminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBtnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnEliminarActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jBtnEliminar);
+        jToolBar1.add(jSeparator1);
+
+        jLabel6.setText("Buscar por nombres:");
+        jToolBar1.add(jLabel6);
+        jToolBar1.add(jTfValor);
+
+        jBtnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/formularios/complementos/img/buscar.png"))); // NOI18N
+        jBtnBuscar.setToolTipText("Buscar");
+        jBtnBuscar.setFocusable(false);
+        jBtnBuscar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBtnBuscar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBtnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnBuscarActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jBtnBuscar);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0)), "Datos Generales", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
@@ -205,12 +232,12 @@ public class Usuario
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 980, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,6 +314,20 @@ public class Usuario
         limpiar();
     }//GEN-LAST:event_jBtnEditarActionPerformed
 
+    private void jBtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEliminarActionPerformed
+        // TODO add your handling code here:
+        lista.eliminarUsuario(jTfUserName.getText());
+        limpiar();
+    }//GEN-LAST:event_jBtnEliminarActionPerformed
+
+    private void jBtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnBuscarActionPerformed
+        // TODO add your handling code here:
+        ArrayList<Object> newLista = new ArrayList<>();
+        String valor = this.jTfValor.getText();
+        newLista = lista.buscarXNombre(valor);
+        
+    }//GEN-LAST:event_jBtnBuscarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -324,6 +365,7 @@ public class Usuario
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBtnBuscar;
     private javax.swing.JButton jBtnEditar;
     private javax.swing.JButton jBtnEliminar;
     private javax.swing.JButton jBtnGuardar;
@@ -333,14 +375,17 @@ public class Usuario
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPfPw;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JTable jTblRegistros;
     private javax.swing.JTextField jTfApellidos;
     private javax.swing.JTextField jTfEmail;
     private javax.swing.JTextField jTfNombres;
     private javax.swing.JTextField jTfUserName;
+    private javax.swing.JTextField jTfValor;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 
